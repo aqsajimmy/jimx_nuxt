@@ -10,6 +10,10 @@
 </template>
 
 <style>
+:root {
+  height: 100dvh;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }

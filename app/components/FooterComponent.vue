@@ -1,63 +1,41 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from "@nuxt/ui";
+import Dock from '~/vue-bits/Components/Dock/Dock.vue';
+import { Icon } from '@iconify/vue';
+import { useRouter } from 'vue-router';
 
-const items: NavigationMenuItem[] = [
+const router = useRouter();
+
+const items = [
 	{
-		label: "Figma Kit",
-		to: "https://go.nuxt.com/figma-ui",
-		target: "_blank",
+		label: 'Home',
+		icon: () => h(Icon, { icon: 'mdi:home', class: 'w-6 h-6 text-white' }),
+		onClick: () => router.push('/')
 	},
 	{
-		label: "Playground",
-		to: "https://stackblitz.com/edit/nuxt-ui",
-		target: "_blank",
+		label: 'Experience',
+		icon: () => h(Icon, { icon: 'mdi:inbox', class: 'w-6 h-6 text-white' }),
+		onClick: () => router.push('/experience')
 	},
 	{
-		label: "Releases",
-		to: "https://github.com/nuxt/ui/releases",
-		target: "_blank",
+		label: 'Profile',
+		icon: () => h(Icon, { icon: 'mdi:user', class: 'w-6 h-6 text-white' }),
+		onClick: () => router.push('/profile')
 	},
-];
+	{
+		label: 'Settings',
+		icon: () => h(Icon, { icon: 'mdi:cog', class: 'w-6 h-6 text-white' }),
+		onClick: () => router.push('/settings')
+	}
+]
 </script>
 
 <template>
 	<UFooter>
-		<template #left>
-			<p class="text-muted text-sm">
-				ᴊɪᴍx. © {{ new Date().getFullYear() }}
-			</p>
-		</template>
-
-		<UNavigationMenu
-			:items="items"
-			variant="link"
-		/>
-
-		<template #right>
-			<UButton
-				icon="i-simple-icons-discord"
-				color="neutral"
-				variant="ghost"
-				to="https://go.nuxt.com/discord"
-				target="_blank"
-				aria-label="Discord"
-			/>
-			<UButton
-				icon="i-simple-icons-x"
-				color="neutral"
-				variant="ghost"
-				to="https://go.nuxt.com/x"
-				target="_blank"
-				aria-label="X"
-			/>
-			<UButton
-				icon="i-simple-icons-github"
-				color="neutral"
-				variant="ghost"
-				to="https://github.com/nuxt/nuxt"
-				target="_blank"
-				aria-label="GitHub"
-			/>
-		</template>
+		<div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+			<Dock :items="items" :panel-height="75" :base-item-size="50" :magnification="60" :distance="200"
+				:dock-height="256" :spring="{ mass: 0.1, stiffness: 150, damping: 12 }" />
+		</div>
 	</UFooter>
 </template>
+
+<style></style>

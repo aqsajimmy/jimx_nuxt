@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
   modules: [
     "@nuxt/content",
     "@nuxt/eslint",
@@ -8,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxtjs/google-fonts",
   ],
+  ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   ui: {
